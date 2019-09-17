@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "695373028171",
+    "firebase_url": "https://privatus-7924e.firebaseio.com",
+    "project_id": "privatus-7924e",
+    "storage_bucket": "privatus-7924e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695373028171:android:503a1565a9b3e020a0e6ce",
+        "android_client_info": {
+          "package_name": "com.digitappstudio.privatus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695373028171-dr8iopn2d89smgtig1f4hps6hfvig8i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvlV-NTyWspXdXyEDnjzRIKY9srAtUTDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695373028171-dr8iopn2d89smgtig1f4hps6hfvig8i8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
