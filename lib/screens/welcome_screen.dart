@@ -4,6 +4,7 @@ import 'package:async/async.dart';
 import 'package:privatus/constants/design_constants.dart';
 import 'package:privatus/components/txtfield_rounded.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:privatus/screens/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   String id = "welcome_screen";
@@ -27,21 +28,22 @@ class WelcomeScreen extends StatelessWidget {
                 Center(
                   child: Column(
                     children: <Widget>[
-                      Image(
-                        image: AssetImage('images/logo_150.png'),
-                        width: 80,
-                      ),
+                      // Image(
+                      //   image: AssetImage('images/logo_150.png'),
+                      //   width: 80,
+                      // ),
                 
+                      SizedBox(height: 20,),
     
                       ColorizeAnimatedTextKit(
                         onTap: () {
                             print("Tap Event");
                           },
                         text: [
-                          "LOGIN",
+                          "Welcome to \nPrivatus Messenger",
                         ],
                         textStyle: TextStyle(
-                            fontSize: 40.0, 
+                            fontSize: 30.0, 
                             fontFamily: "Horizon",
                             fontWeight: FontWeight.bold,
                         ),
@@ -50,19 +52,12 @@ class WelcomeScreen extends StatelessWidget {
                           Colors.redAccent,
                       
                         ],
-                        textAlign: TextAlign.start,
+                        textAlign: TextAlign.center,
                         alignment: AlignmentDirectional.topStart // or Alignment.topLeft
                       ),
 
-                      // SizedBox(height: 10,),
-                      //(hinttext,passchar,keyboardtype)
-                      Container(width: 200, child: Column(
-                        children: <Widget>[
-                          RoundedTxtField('Insert Email Address',false,),
-                          SizedBox(height: 15,),
-                          RoundedTxtField('Insert Password',true,),
-                        ],
-                      )),
+                  
+                
                       
                       SizedBox(height: 10,),
                       RaisedButton(
@@ -70,6 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                         color: Colors.amber,
                         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(32)) ,
                         onPressed: (){ 
+                          Navigator.pushNamed(context, LoginScreen().id );
                         },
                       )
                     ],
