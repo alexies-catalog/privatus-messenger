@@ -23,14 +23,20 @@ class _LoginScreenState extends State<LoginScreen> {
   String email;
   String password;
   bool showSpinner = false;
+  TextEditingController emailController =TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
     password = null;
+
+    emailController.text='ialexies@gmail.com';
+    passwordController.text='123456';
+    
 
   }
 
@@ -86,25 +92,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 
                        
 
-                            TextField(
+                            TextFormField(
+                              // initialValue: 'ialexies@gmail.com',
+                              controller: emailController,
                               textAlign: TextAlign.center,
                               keyboardType:TextInputType.emailAddress,
                               decoration: GenTxtInputField.copyWith(hintText: 'Insert Email'),
                               style: TextStyle(fontSize: 17),
-                              onChanged: (value){
-                                email = value;
-                              },  
+                              // onChanged: (value){
+                              //   email = value;
+                              // },  
                             ),
                             SizedBox(height: 15,),
-                            TextField(
+                            TextFormField(
+
+                              // initialValue: '123456',
+                              controller: passwordController,
                               textAlign: TextAlign.center,
                               obscureText: true,
                               keyboardType:TextInputType.emailAddress,
                               decoration: GenTxtInputField.copyWith(hintText: 'Create Password'),
                               style: TextStyle(fontSize: 17),
-                              onChanged: (value){
-                                password = value;
-                              },  
+                              // onChanged: (value){
+                              //   password = value;
+                              // },  
                             ),
 
                           ],
@@ -124,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
 
                             try {
-                              final loginUser = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                              final loginUser = await _auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text);
                       
                               if (loginUser!=null){
                                 Navigator.pushNamed(context, ChatScreen().id);
