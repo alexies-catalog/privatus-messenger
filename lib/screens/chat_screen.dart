@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart' as prefix0;
 import 'package:privatus/constants/design_constants.dart';
+  final _firestore = Firestore.instance;
+
 
 class ChatScreen extends StatefulWidget {
   String id = "chat_screen";
@@ -12,11 +14,29 @@ class ChatScreen extends StatefulWidget {
   _ChatScreenState createState() => _ChatScreenState();
 }
 
+void messageStream() async{
+  await for( var snapshot in  _firestore.collection('messages').snapshots()){
+    for (var message in snapshot.documents){
+      print(message.data);
+    }
+  }
+}
+
+
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  final _firestore = Firestore.instance;
+
   String messageText;
   TextEditingController messageController = TextEditingController();
+
+
+
+
+
+
+
+
+
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -57,6 +77,24 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
               child: Column(
           children: <Widget>[
+            		StreamBuilder(
+                  stream: _firestore.collection('messages').snapshots(),
+                  builder:(context,snapshot){
+                   final messages = snapshot.data.documents;
+                   List<Text> messageWidgets = [];
+                    for (var message in messages){
+                      final messageText = message.data['text'];
+                      final messageSender = message.data['sender'];
+                      final messageWidget  =  Text('$messageText');
+                      messageWidgets.add(messageWidget);
+                    }
+                   return  Column(
+                       children: messageWidgets,
+                     
+                   );
+                  },
+                ),
+
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
