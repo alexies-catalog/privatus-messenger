@@ -86,8 +86,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                           SizedBox(height: 15,),
                           TextField(
+                            obscureText: true,
                             textAlign: TextAlign.center,
-                            // obscureText: passChar,
+                     
                             keyboardType:TextInputType.emailAddress,
                             decoration: GenTxtInputField.copyWith(hintText: 'Create Password'),
                             style: TextStyle(fontSize: 17),

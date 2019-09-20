@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:privatus/screens/chat_screen.dart';
 import 'package:async/async.dart';
+import 'package:privatus/screens/registration_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -57,11 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: <Widget>[
                        
-                        SizedBox(height: 30,),
-                  
+                        // SizedBox(height: 30,),
+                      
                         Image(
                           image: AssetImage('images/logo_150.png'),
-                          width: 80,
+                          width: 200,
                         ),
                   
                         SizedBox(height: 10,),
@@ -150,6 +151,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             
 
                           },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: GestureDetector(
+                            child: Text('REGISTER'),
+                            onTap: (){
+                                Navigator.pushNamed(context, RegistrationScreen().id);
+                            },
+                        
+                       
+                          ),
                         )
                       ],
                     ),
